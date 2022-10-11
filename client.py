@@ -12,6 +12,13 @@ def on_message(client, payload, message):
         print(f'{name}: {data}')
 
 
+room = sys.argv[1].strip('/')
+username = sys.argv[2]
+
+if username.find('/') != -1:
+    print('ERROR: Name must not contain "/" symbols!')
+    exit()
+
 broker = 'broker.emqx.io'
 
 client_id = f'test_{random.randint(10000,99999)}'
@@ -24,8 +31,6 @@ except Exception:
     print('Failed to connect')
     exit()
 
-room = sys.argv[1]
-username = sys.argv[2]
 client.loop_start()
 
 print('\nWELCOME TO THE CLUB, BUDDY')
