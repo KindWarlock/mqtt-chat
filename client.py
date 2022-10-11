@@ -33,9 +33,8 @@ except Exception:
 
 client.loop_start()
 
-print('\nWELCOME TO THE CLUB, BUDDY')
-
 client.subscribe(room + '/+')
+print(f'\nWELCOME TO THE {room}')
 room = room + '/' + username
 client.publish(room, 'HAS JOINED THE ROOM'.encode('utf-8'))
 print()
